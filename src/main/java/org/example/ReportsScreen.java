@@ -3,13 +3,17 @@ package org.example;
 public class ReportsScreen {
 
     public static void main(String[] args){
-        System.out.println("\n\t [1] Month To Date" +
+        System.out.println("\n\t\t REPORT SCREEN"+
+                "\n" +
+                "\n\t [1] Month To Date" +
                 "\n\t [2] Previous Month" +
                 "\n\t [3] Year To Date" +
                 "\n\t [4] Previous Year" +
                 "\n\t [5] Search by Vendor" +
                 "\n\t [6] Custom Search" +
                 "\n\t [0] Back");
+
+        // parse file into tokens and put into an array for filtering // object array
 
          /*
         Switch(reportsScreenChoice){
@@ -35,8 +39,9 @@ public class ReportsScreen {
     // previous month method
     // year to date method
     // previous year method
-    // search by vendor methof
+    // search by vendor method
     // turn back to report screen
     // return to home screen page
     // custom search method: CHALLENGE
+    // public customSearch();
 }
