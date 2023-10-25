@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -46,12 +49,43 @@ public class Home {
         String depositVendor = scanner.nextLine();
         System.out.println("\n Enter Deposit Amount: ");
         String depositAmount = scanner.nextLine();
+
+        try(FileWriter depositWriter = new FileWriter("transactions.csv");
+            BufferedWriter bufferedWriter = new BufferedWriter(depositWriter))
+        {
+
+        }
+        catch(IOException e)
+        {
+
+        }
     };
     public static void makePayment()
     {
         System.out.println
         (
-                "\t Please Enter Payment Details: ");
+                "\t Please Enter Payment Details:" +
+                "\n Enter Payment Date (YYYY-MM-DD): "
+        );
+        String paymentDate = scanner.nextLine();
+        System.out.println("\n Enter Payment Time (HH:MM:SS): ");
+        String paymentTime = scanner.nextLine();
+        System.out.println("\n Enter Payment Description: ");
+        String paymentDescription = scanner.nextLine();
+        System.out.println("\n Enter Payment Vendor: ");
+        String paymentVendor = scanner.nextLine();
+        System.out.println("\n Enter Payment Amount: ");
+        String paymentAmount = scanner.nextLine();
+
+        try(FileWriter paymentWriter = new FileWriter("transactions.csv");
+            BufferedWriter bufferedWriter = new BufferedWriter(paymentWriter))
+        {
+
+        }
+        catch(IOException e)
+        {
+
+        }
     };
     public static void exitApp(){};
 
