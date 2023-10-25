@@ -13,17 +13,20 @@ public class Ledger {
 
     public static void main(String[] args)
     {
-        System.out.println("\tLEDGER" +
+        System.out.println(
+                "\tLEDGER" +
                 "\n [A] ALL (display all entries)" +
                 "\n [D] Deposits" +
                 "\n [P] Payments" +
                 "\n [R] Reports" +
-                "\n [H] Home");
+                "\n [H] Home"
+        );
 
         Scanner scanner = new Scanner(System.in);
         char ledgerChoice = scanner.next().toUpperCase().charAt(0);
 
-        switch(ledgerChoice) {
+        switch(ledgerChoice)
+        {
             case 'A': displayAll();
             break;
             case 'D': displayDeposits();
@@ -39,24 +42,49 @@ public class Ledger {
     };
 
     public static void displayAll(){
-        //use an array list sort;
+        System.out.println("Displaying All Entries:");
+        for (Transaction transaction : transactionList)
+        {
+            System.out.println(
+                    transaction.getTransactionDate() + " " +
+                    transaction.getTransactionTime() + " " +
+                    transaction.getTransactionDesc() + " " +
+                    transaction.getTransactionVendor() + " " +
+                    transaction.getTransactionAmount() + " "
+            );
+        }
     };
     public static void displayDeposits(){
-        // use an array list sort:
-        //transactionList().stream().filter();
-        // positive
-
-        for (Transaction transaction : transactionList) {
-
+        System.out.println("Displaying all Deposits:");
+        for (Transaction transaction : transactionList)
+        {
+            if(transaction.getTransactionAmount() > 0)
+            {
+                System.out.println(
+                        transaction.getTransactionDate() + " " +
+                        transaction.getTransactionTime() + " " +
+                        transaction.getTransactionDesc() + " " +
+                        transaction.getTransactionVendor() + " " +
+                        transaction.getTransactionAmount()
+                );
+            }
         }
 
     };
     public static void displayPayments(){
-        // use an array list sort:
-        // negative
-
-        for (Transaction transaction : transactionList) {
-
+        System.out.println("Displaying all Payments");
+        for (Transaction transaction : transactionList)
+        {
+            if(transaction.getTransactionAmount() < 0)
+            {
+                System.out.println(
+                        transaction.getTransactionDate() + " " +
+                        transaction.getTransactionTime() + " " +
+                        transaction.getTransactionDesc() + " " +
+                        transaction.getTransactionVendor() + " " +
+                        transaction.getTransactionAmount()
+                );
+            }
         }
     };
     public static void displayReports(){};
