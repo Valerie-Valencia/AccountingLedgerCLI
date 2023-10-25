@@ -3,7 +3,8 @@ package org.example;
 import java.util.Scanner;
 
 public class Home {
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         System.out.println("\tHOME" +
                 "\n [D] Add Deposit" +
                 "\n [P] Make Payment (Debit)" +
@@ -13,14 +14,17 @@ public class Home {
         Scanner scanner = new Scanner(System.in);
         char homeChoice = scanner.next().toUpperCase().charAt(0);
 
-        switch(homeChoice){
+        switch(homeChoice)
+        {
             case 'D': addDeposit();
-                break;
+            break;
             case 'P': makePayment();
-                break;
+            break;
             case 'L': //go to ledger
-                break;
+            break;
             case 'X': exitApp();
+            break;
+            default: //add code
         }
     };
     public static void addDeposit(){};

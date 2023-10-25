@@ -18,15 +18,15 @@ public class Report{
 
         switch(reportChoice){
             case 1: monthToDate();
-                break;
+            break;
             case 2: previousMonth();
-                break;
+            break;
             case 3: yearToDate();
-                break;
+            break;
             case 4: previousYear();
-                break;
+            break;
             case 5: searchByVendor();
-                break;
+            break;
             case 0: return;
             default: //prompt menu again
         }

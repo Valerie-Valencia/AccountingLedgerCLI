@@ -1,10 +1,18 @@
 package org.example;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ledger {
 
-    public static void main(String[] args){
+    static ArrayList<Transaction> transactionList = new ArrayList<>();
+
+    public static void main(String[] args)
+    {
         System.out.println("\tLEDGER" +
                 "\n [A] ALL (display all entries)" +
                 "\n [D] Deposits" +
@@ -17,13 +25,13 @@ public class Ledger {
 
         switch(ledgerChoice) {
             case 'A': displayAll();
-                break;
+            break;
             case 'D': displayDeposits();
-                break;
+            break;
             case 'P': displayPayments();
-                break;
+            break;
             case 'R': displayReports();
-                break;
+            break;
             case 'H': return;
             default: // prompt menu again
 
@@ -36,30 +44,34 @@ public class Ledger {
     public static void displayDeposits(){
         // use an array list sort:
         //transactionList().stream().filter();
+        // positive
+
+        for (Transaction transaction : transactionList) {
+
+        }
+
     };
     public static void displayPayments(){
         // use an array list sort:
+        // negative
 
-    };
-    public static void displayReports(){
-        //Report.main(new String[]{});
-    };
-    /*
-        public static void returnHome(){
-            Home.main(new String[]{});
-        };
+        for (Transaction transaction : transactionList) {
 
-     */
-    public static ArrayList<Transaction> transactionList(){
-        ArrayList<Transaction> transactionList = new ArrayList<>();
+        }
+    };
+    public static void displayReports(){};
+
+    public static ArrayList<Transaction> transactionParse(){
         String delimiter = "\\|";
         Scanner scanner = new Scanner(System.in);
 
-        try( FileReader filereader = new FileReader("transactions.csv");
-             BufferedReader bufferedreader = new BufferedReader(filereader)){
+        try(FileReader filereader = new FileReader("transactions.csv");
+            BufferedReader bufferedreader = new BufferedReader(filereader))
+        {
             String input = null;
 
-            while((input = bufferedreader.readLine()) != null){
+            while((input = bufferedreader.readLine()) != null)
+            {
                 String[] recordDetails = input.split(delimiter);
 
                 LocalDate date = LocalDate.parse(recordDetails[0]);
