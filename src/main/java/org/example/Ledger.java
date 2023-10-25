@@ -13,8 +13,9 @@ public class Ledger {
 
     public static void main(String[] args)
     {
-        System.out.println(
-                "\tLEDGER" +
+        System.out.println
+        (
+                "\t LEDGER" +
                 "\n [A] ALL (display all entries)" +
                 "\n [D] Deposits" +
                 "\n [P] Payments" +

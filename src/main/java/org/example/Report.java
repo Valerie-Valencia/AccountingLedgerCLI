@@ -5,13 +5,16 @@ import java.util.Scanner;
 public class Report{
 
     public static void main(String[] args){
-        System.out.println("\t REPORT" +
+        System.out.println
+        (
+                "\t REPORT" +
                 "\n [1] Month to Date" +
                 "\n [2] Previous Month" +
                 "\n [3] Year to Date" +
                 "\n [4] Previous Year" +
                 "\n [5] Search by Vendor" +
-                "\n [0] Back");
+                "\n [0] Back"
+        );
 
         Scanner scanner = new Scanner(System.in);
         int reportChoice = scanner.nextInt();
