@@ -30,21 +30,33 @@ public class Ledger {
 
         Scanner scanner = new Scanner(System.in);
         char ledgerChoice = scanner.next().toUpperCase().charAt(0);
+        boolean validInput = true;
 
-        switch(ledgerChoice)
+        try
         {
-            case 'A': displayAll();
-                break;
-            case 'D': displayDeposits();
-                break;
-            case 'P': displayPayments();
-                break;
-            case 'R': Report.showReportScreen();
-                break;
-            case 'H': Home.showHomeScreen();
-            default: // prompt menu again
+            while(true)
+            {
+                switch(ledgerChoice)
+                {
+                    case 'A': displayAll();
+                    break;
+                    case 'D': displayDeposits();
+                    break;
+                    case 'P': displayPayments();
+                    break;
+                    case 'R': Report.showReportScreen();
+                    break;
+                    case 'H': Home.showHomeScreen();
+                    default: validInput = false;
 
+                }
+            }
         }
+        catch(Exception e)
+        {
+            System.out.println(" ");
+        }
+
     }
 
     public static void displayAll(){
