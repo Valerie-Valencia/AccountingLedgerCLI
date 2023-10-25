@@ -13,6 +13,11 @@ public class Ledger {
 
     public static void main(String[] args)
     {
+       showLedgerScreen();
+    };
+
+    public static void showLedgerScreen()
+    {
         System.out.println
         (
                 "\t LEDGER" +
@@ -29,18 +34,18 @@ public class Ledger {
         switch(ledgerChoice)
         {
             case 'A': displayAll();
-            break;
+                break;
             case 'D': displayDeposits();
-            break;
+                break;
             case 'P': displayPayments();
-            break;
-            case 'R': displayReports();
-            break;
-            case 'H': return;
+                break;
+            case 'R': Report.showReportScreen();
+                break;
+            case 'H': Home.showHomeScreen();
             default: // prompt menu again
 
         }
-    };
+    }
 
     public static void displayAll(){
         System.out.println("Displaying All Entries:");
@@ -88,7 +93,6 @@ public class Ledger {
             }
         }
     };
-    public static void displayReports(){};
 
     public static ArrayList<Transaction> transactionParse(){
         String delimiter = "\\|";
@@ -116,7 +120,7 @@ public class Ledger {
             bufferedreader.close();
         }
         catch(Exception e){
-            System.out.println("Sorry, file could not be found");
+            System.out.println(" ");
         }
 
         return transactionList;

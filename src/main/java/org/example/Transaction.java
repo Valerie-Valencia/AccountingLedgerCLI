@@ -43,9 +43,9 @@ public class Transaction {
     public String toString()
     {
         return "\n" + getTransactionDate() +
-                "\n" + getTransactionTime() +
-                "\n" + getTransactionDesc() +
-                "\n" + getTransactionVendor() +
-                "\n" + getTransactionAmount();
+               "\n" + getTransactionTime() +
+               "\n" + getTransactionDesc() +
+               "\n" + getTransactionVendor() +
+               "\n" + getTransactionAmount();
     }
 }

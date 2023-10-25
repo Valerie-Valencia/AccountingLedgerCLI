@@ -1,10 +1,21 @@
 package org.example;
 
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Scanner;
 
-public class Report{
+import static org.example.Ledger.transactionList;
 
-    public static void main(String[] args){
+public class Report implements Comparable<Transaction>{
+
+    public static void main(String[] args)
+    {
+        showReportScreen();
+    }
+
+    public static void showReportScreen()
+    {
         System.out.println
         (
                 "\t REPORT" +
@@ -21,23 +32,30 @@ public class Report{
 
         switch(reportChoice){
             case 1: monthToDate();
-            break;
+                break;
             case 2: previousMonth();
-            break;
+                break;
             case 3: yearToDate();
-            break;
+                break;
             case 4: previousYear();
-            break;
+                break;
             case 5: searchByVendor();
-            break;
-            case 0: return;
+                break;
+            case 0: Home.showHomeScreen();
             default: //prompt menu again
         }
     }
-    public static void monthToDate(){};
+    public static void monthToDate()
+    {
+        //return transactionList.sort();
+        // Collection.sort(transactionList);
+    };
     public static void previousMonth(){};
     public static void yearToDate(){};
     public static void previousYear(){};
     public static void searchByVendor(){};
-
+    @Override
+    public int compareTo(Transaction o) {
+        return o.getTransactionDate().compareTo(o.getTransactionDate());
+    }
 }
