@@ -19,12 +19,51 @@ public class Home {
         {
             System.out.println
             (
+                   """
+                   \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                   \t ;;                                                                                ;;
+                   \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                   \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;                      /////////////////|                  ;;;;;     ;;
+                   \t ;;       ;;;;;                     ///////////////// |                  ;;;;;     ;;
+                   \t ;;       ;;;;;                     ::::::::::::::::: |                  ;;;;;     ;;
+                   \t ;;       ;;:::                     ::::::::::::::::: |                  ;;;;;     ;;
+                   \t ;;       ;;;;;                     :::::::::::::::::/                   ;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;                      H O M E  M E N U                    ;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;      [D]  ;;            ADD DEPOSIT           ;;         ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;      [P]  ;;           MAKE PAYMENT           ;;         ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;      [L]  ;;              LEDGER              ;;         ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;      [X]  ;;               EXIT               ;;         ;;;;;     ;;
+                   \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                   \t ;;       ;;;;;                                                          ;;;;;     ;;
+                   \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                   \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;                                                                                ;;
+                    \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                      """
+            );
+            /*
+            System.out.println
+            (
                     "\t HOME" +
                     "\n [D] Add Deposit" +
                     "\n [P] Make Payment (Debit)" +
                     "\n [L] Ledger" +
                     "\n [X] Exit"
-            );
+            );*/
 
             char homeChoice = scanner.next().toUpperCase().charAt(0);
             boolean validInput = true;
@@ -54,20 +93,27 @@ public class Home {
     public static void addDeposit()
     {
         String delimiter = "\\|";
+        String depositDate = scanner.nextLine();
         System.out.println
         (
-                "\t Please Enter Deposit Details:" +
-                "\n Enter Deposit Date (YYYY-MM-DD): "
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;;   ENTER DEPOSIT DETAILS   ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:
+                
+                Enter Deposit Date (YYYY-MM-DD):
+                """
         );
-        String depositDate = scanner.nextLine();
-        System.out.println("\n Enter Deposit Time (HH:MM:SS): ");
         String depositTime = scanner.nextLine();
-        System.out.println("\n Enter Deposit Description: ");
+        System.out.println("Enter Deposit Time (HH:MM:SS): ");
         String depositDescription = scanner.nextLine();
-        System.out.println("\n Enter Deposit Vendor: ");
+        System.out.println("Enter Deposit Description: ");
         String depositVendor = scanner.nextLine();
-        System.out.println("\n Enter Deposit Amount: ");
+        System.out.println("Enter Deposit Vendor: ");
         String depositAmount = scanner.nextLine();
+        System.out.println("Enter Deposit Amount: ");
+
+        System.out.println("DEPOSIT HAS BEEN ADDED!");
 
         try(FileWriter depositWriter = new FileWriter("transactions.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(depositWriter))
@@ -90,20 +136,27 @@ public class Home {
     public static void makePayment()
     {
         String delimiter = "\\|";
+        String paymentDate = scanner.nextLine();
         System.out.println
         (
-                "\t Please Enter Payment Details:" +
-                "\n Enter Payment Date (YYYY-MM-DD): "
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;;   ENTER PAYMENT DETAILS   ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                
+                Enter Payment Date (YYYY-MM-DD):
+                """
         );
-        String paymentDate = scanner.nextLine();
-        System.out.println("\n Enter Payment Time (HH:MM:SS): ");
         String paymentTime = scanner.nextLine();
-        System.out.println("\n Enter Payment Description: ");
+        System.out.println("\n Enter Payment Time (HH:MM:SS): ");
         String paymentDescription = scanner.nextLine();
-        System.out.println("\n Enter Payment Vendor: ");
+        System.out.println("\n Enter Payment Description: ");
         String paymentVendor = scanner.nextLine();
-        System.out.println("\n Enter Payment Amount: ");
+        System.out.println("\n Enter Payment Vendor: ");
         String paymentAmount = scanner.nextLine();
+        System.out.println("\n Enter Payment Amount: ");
+
+        System.out.println("PAYMENT HAS BEEN MADE!");
 
         try(FileWriter paymentWriter = new FileWriter("transactions.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(paymentWriter))

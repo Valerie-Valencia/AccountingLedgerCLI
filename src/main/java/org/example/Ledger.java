@@ -23,6 +23,51 @@ public class Ledger {
         {
             System.out.println
             (
+                    """
+                    \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                    \t ;;                                                                                ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;                      /////////////////|                  ;;;;;     ;;
+                    \t ;;       ;;;;;                     ///////////////// |                  ;;;;;     ;;
+                    \t ;;       ;;;;;                     ::::::::::::::::: |                  ;;;;;     ;;
+                    \t ;;       ;;:::                     ::::::::::::::::: |                  ;;;;;     ;;
+                    \t ;;       ;;;;;                     :::::::::::::::::/                   ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;                    L E D G E R  M E N U                  ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [A]  ;;                ALL               ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [D]  ;;             DEPOSITS             ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [P]  ;;             PAYMENTS             ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [R]  ;;             REPORTS              ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;; 
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [H]  ;;               HOME               ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;                                                                                ;;
+                    \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                      
+                    """
+            );
+
+            /*
+            System.out.println
+            (
                     "\t LEDGER" +
                     "\n [A] ALL (display all entries)" +
                     "\n [D] Deposits" +
@@ -30,6 +75,8 @@ public class Ledger {
                     "\n [R] Reports" +
                     "\n [H] Home"
             );
+
+             */
 
             char ledgerChoice = scanner.next().toUpperCase().charAt(0);
             boolean validInput = true;
@@ -61,7 +108,14 @@ public class Ledger {
     }
 
     public static void displayAll(){
-        System.out.println("Displaying All Entries:");
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;;  DISPLAYING ALL ENTRIES   ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
         for (Transaction transaction : transactionList)
         {
             System.out.println(
@@ -74,7 +128,14 @@ public class Ledger {
         }
     };
     public static void displayDeposits(){
-        System.out.println("Displaying all Deposits:");
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;;  DISPLAYING ALL DEPOSITS  ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
         for (Transaction transaction : transactionList)
         {
             if(transaction.getTransactionAmount() > 0)
@@ -91,7 +152,14 @@ public class Ledger {
 
     };
     public static void displayPayments(){
-        System.out.println("Displaying all Payments");
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;;  DISPLAYING ALL PAYMENTS  ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
         for (Transaction transaction : transactionList)
         {
             if(transaction.getTransactionAmount() < 0)

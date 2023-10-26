@@ -23,6 +23,53 @@ public class Report{
         try
         {
             System.out.println
+                    (
+                            """
+                    \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                    \t ;;                                                                                ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;                      /////////////////|                  ;;;;;     ;;
+                    \t ;;       ;;;;;                     ///////////////// |                  ;;;;;     ;;
+                    \t ;;       ;;;;;                     ::::::::::::::::: |                  ;;;;;     ;;
+                    \t ;;       ;;:::                     ::::::::::::::::: |                  ;;;;;     ;;
+                    \t ;;       ;;;;;                     :::::::::::::::::/                   ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;                    R E P O R T  M E N U                  ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [1]  ;;          MONTH TO DATE           ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [2]  ;;          PREVIOUS MONTH          ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [3]  ;;           YEAR TO DATE           ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [4]  ;;           PREVIOUS YEAR          ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [5]  ;;         SEARCH BY VENDOR         ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;      [0]  ;;               BACK               ;;         ;;;;;     ;;
+                    \t ;;       ;;;;;           ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;         ;;;;;     ;;
+                    \t ;;       ;;;;;                                                          ;;;;;     ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;     ;;
+                    \t ;;                                                                                ;;
+                    \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                    """
+            );
+            /*
+            System.out.println
             (
                     "\t REPORT" +
                     "\n [1] Month to Date" +
@@ -32,6 +79,8 @@ public class Report{
                     "\n [5] Search by Vendor" +
                     "\n [0] Back"
             );
+
+             */
 
             int reportChoice = scanner.nextInt();
             boolean validInput = true;
@@ -63,8 +112,14 @@ public class Report{
     public static void monthToDate()
     {
         LocalDate beginningOfMonth = todayDate.withDayOfMonth(1);
-        System.out.println("Report Entries (" + beginningOfMonth +
-                           "-" + todayDate + "): ");
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;; MONTH TO DATE REPORT ENTRIES ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
 
         for(Transaction t : transactionList)
         {
@@ -87,7 +142,14 @@ public class Report{
     {
         LocalDate todayDate = LocalDate.now();
         LocalDate previousMonth = LocalDate.from(todayDate.minusMonths(1).getMonth());
-        System.out.println("Report Entries (" + previousMonth + "): ");
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;; PREVIOUS MONTH REPORT ENTRIES ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
 
         for(Transaction t : transactionList)
         {
@@ -108,7 +170,14 @@ public class Report{
     public static void yearToDate()
     {
         LocalDate beginningOfYear = todayDate.withDayOfYear(1);
-        System.out.println("Report Entries (" + beginningOfYear + "-" + todayDate);
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;; YEAR TO DATE REPORT ENTRIES ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
 
         for(Transaction t : transactionList)
         {
@@ -130,7 +199,14 @@ public class Report{
     public static void previousYear()
     {
         int previousYear = todayDate.minusYears(1).getYear();
-        System.out.println("Report Entries (" + previousYear + ")");
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;; PREVIOUS YEAR REPORT ENTRIES ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
 
         for(Transaction t : transactionList)
         {
@@ -151,8 +227,16 @@ public class Report{
     };
     public static void searchByVendor()
     {
-        System.out.println("Enter Vendor Name: ");
         String vendorChoice = scanner.nextLine();
+        System.out.println
+        (
+                """
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t ;;    ENTER VENDOR DETAILS   ;;
+                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                """
+        );
+        System.out.println("Enter Vendor Name: ");
         for(Transaction t : transactionList)
         {
             if(vendorChoice.equals(t.getTransactionVendor()))
@@ -173,8 +257,15 @@ public class Report{
 
     public static void returnLedger()
     {
-        System.out.println("[0] Back (Ledger Menu)");
         int userChoice = scanner.nextInt();
+        System.out.println
+        (
+                """
+                \t      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                \t [0]  ;;       BACK  (LEDGER MENU)        ;;        
+                \t      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
+                """
+        );
         boolean validInput = true;
         try
         {
