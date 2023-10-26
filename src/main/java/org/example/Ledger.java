@@ -19,7 +19,7 @@ public class Ledger {
 
     public static void showLedgerScreen()
     {
-        try
+        do
         {
             System.out.println
             (
@@ -65,45 +65,29 @@ public class Ledger {
                     """
             );
 
-            /*
-            System.out.println
-            (
-                    "\t LEDGER" +
-                    "\n [A] ALL (display all entries)" +
-                    "\n [D] Deposits" +
-                    "\n [P] Payments" +
-                    "\n [R] Reports" +
-                    "\n [H] Home"
-            );
-
-             */
-
             char ledgerChoice = scanner.next().toUpperCase().charAt(0);
             boolean validInput = true;
 
-            while(true)
+            try
             {
                 switch(ledgerChoice)
                 {
-                    case 'A': displayAll();
-                    break;
-                    case 'D': displayDeposits();
-                    break;
-                    case 'P': displayPayments();
-                    break;
-                    case 'R': Report.showReportScreen();
-                    break;
-                    case 'H': Home.showHomeScreen();
-                    break;
-                    default: validInput = false;
+                    case 'A' -> displayAll();
+                    case 'D' -> displayDeposits();
+                    case 'P' -> displayPayments();
+                    case 'R' -> Report.showReportScreen();
+                    case 'H'-> Home.showHomeScreen();
+                    default -> System.out.println("Please enter valid choice: ");
 
                 }
             }
+            catch(Exception e)
+            {
+                System.out.println("There was an error");
+                e.printStackTrace();
+            }
         }
-        catch(Exception e)
-        {
-            System.out.println(" ");
-        }
+        while(true);
 
     }
 

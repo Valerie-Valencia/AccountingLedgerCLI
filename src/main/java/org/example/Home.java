@@ -58,14 +58,22 @@ public class Home {
                      """
              );
 
-            String homeChoice = scanner.next().toUpperCase().trim();
+            char homeChoice = scanner.next().toUpperCase().charAt(0);
 
-            switch (homeChoice) {
-                case "D" -> addDeposit();
-                case "P" -> makePayment();
-                case "L" -> Ledger.showLedgerScreen();
-                case "X" -> exitApp();
-                default -> System.out.println("Please enter valid choice: ");
+            try
+            {
+                switch (homeChoice) {
+                    case 'D' -> addDeposit();
+                    case 'P' -> makePayment();
+                    case 'L' -> Ledger.showLedgerScreen();
+                    case 'X' -> exitApp();
+                    default -> System.out.println("Please enter valid choice: ");
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println("There was an error");
+                e.printStackTrace();
             }
         } while (true);
     }

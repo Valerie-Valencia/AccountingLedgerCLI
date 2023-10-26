@@ -20,7 +20,7 @@ public class Report{
 
     public static void showReportScreen()
     {
-        try
+        do
         {
             System.out.println
                     (
@@ -68,46 +68,31 @@ public class Report{
                     \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                     """
             );
-            /*
-            System.out.println
-            (
-                    "\t REPORT" +
-                    "\n [1] Month to Date" +
-                    "\n [2] Previous Month" +
-                    "\n [3] Year to Date" +
-                    "\n [4] Previous Year" +
-                    "\n [5] Search by Vendor" +
-                    "\n [0] Back"
-            );
-
-             */
 
             int reportChoice = scanner.nextInt();
             boolean validInput = true;
 
-            do {
-                switch (reportChoice) {
-                    case 1: monthToDate();
-                    break;
-                    case 2: previousMonth();
-                    break;
-                    case 3: yearToDate();
-                    break;
-                    case 4: previousYear();
-                    break;
-                    case 5: searchByVendor();
-                    break;
-                    case 0: Ledger.showLedgerScreen();
-                    break;
-                    default: validInput = false;
-                    break;
+            try
+            {
+                switch (reportChoice)
+                {
+                    case 1 -> monthToDate();
+                    case 2 -> previousMonth();
+                    case 3 -> yearToDate();
+                    case 4 -> previousYear();
+                    case 5 -> searchByVendor();
+                    case 0 -> Ledger.showLedgerScreen();
+                    default -> System.out.println("Please enter valid choice: ");
+
                 }
-            } while (true);
+            }
+            catch(Exception e)
+            {
+                System.out.println("There was an error");
+                e.printStackTrace();
+            }
         }
-        catch(Exception e)
-        {
-            System.out.println(" ");
-        }
+        while(true);
     }
     public static void monthToDate()
     {
