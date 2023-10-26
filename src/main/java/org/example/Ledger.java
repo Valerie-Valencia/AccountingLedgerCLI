@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Ledger {
 
     static ArrayList<Transaction> transactionList = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args)
     {
@@ -18,22 +19,21 @@ public class Ledger {
 
     public static void showLedgerScreen()
     {
-        System.out.println
-        (
-                "\t LEDGER" +
-                "\n [A] ALL (display all entries)" +
-                "\n [D] Deposits" +
-                "\n [P] Payments" +
-                "\n [R] Reports" +
-                "\n [H] Home"
-        );
-
-        Scanner scanner = new Scanner(System.in);
-        char ledgerChoice = scanner.next().toUpperCase().charAt(0);
-        boolean validInput = true;
-
         try
         {
+            System.out.println
+            (
+                    "\t LEDGER" +
+                    "\n [A] ALL (display all entries)" +
+                    "\n [D] Deposits" +
+                    "\n [P] Payments" +
+                    "\n [R] Reports" +
+                    "\n [H] Home"
+            );
+
+            char ledgerChoice = scanner.next().toUpperCase().charAt(0);
+            boolean validInput = true;
+
             while(true)
             {
                 switch(ledgerChoice)
@@ -47,6 +47,7 @@ public class Ledger {
                     case 'R': Report.showReportScreen();
                     break;
                     case 'H': Home.showHomeScreen();
+                    break;
                     default: validInput = false;
 
                 }

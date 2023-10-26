@@ -14,26 +14,40 @@ public class Home {
     };
 
     public static void showHomeScreen()
-    {   System.out.println
-        (
-                "\t HOME" +
-                "\n [D] Add Deposit" +
-                "\n [P] Make Payment (Debit)" +
-                "\n [L] Ledger" +
-                "\n [X] Exit"
-        );
-        char homeChoice = scanner.next().toUpperCase().charAt(0);
-        switch(homeChoice)
+    {
+        try
         {
-            case 'D': addDeposit();
-                break;
-            case 'P': makePayment();
-                break;
-            case 'L': Ledger.showLedgerScreen();
-                break;
-            case 'X': exitApp();
-                break;
-            default: //add code
+            System.out.println
+            (
+                    "\t HOME" +
+                    "\n [D] Add Deposit" +
+                    "\n [P] Make Payment (Debit)" +
+                    "\n [L] Ledger" +
+                    "\n [X] Exit"
+            );
+
+            char homeChoice = scanner.next().toUpperCase().charAt(0);
+            boolean validInput = true;
+
+            while(true)
+            {
+                switch(homeChoice)
+                {
+                    case 'D': addDeposit();
+                    break;
+                    case 'P': makePayment();
+                    break;
+                    case 'L': Ledger.showLedgerScreen();
+                    break;
+                    case 'X': System.exit(0);
+                    break;
+                    default: validInput = false;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(" ");
         }
     }
 
@@ -109,6 +123,4 @@ public class Home {
             // add code
         }
     };
-    public static void exitApp(){};
-
 }
