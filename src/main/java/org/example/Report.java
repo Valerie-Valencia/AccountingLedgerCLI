@@ -11,7 +11,7 @@ import static org.example.Ledger.transactionList;
 public class Report{
 
     static Scanner scanner = new Scanner(System.in);
-    static String delimiter = "\\|";
+    static String delimiter = "|";
     static LocalDate todayDate = LocalDate.now();
     public static void main(String[] args)
     {

@@ -176,7 +176,7 @@ public class Ledger {
     };
 
     public static ArrayList<Transaction> transactionParse(){
-        String delimiter = "\\|";
+        String delimiter = "|";
         Scanner scanner = new Scanner(System.in);
 
         try(FileReader filereader = new FileReader("transactions.csv");
