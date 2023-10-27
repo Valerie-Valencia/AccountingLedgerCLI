@@ -2,150 +2,146 @@ package org.example;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Ledger {
 
-    static ArrayList<Transaction> transactionList = new ArrayList<>();
+    public static ArrayList<Transaction> transactionList;
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         LedgerScreen.showLedgerScreen();
-    };
+    }
 
-    public static void ledgerChoice()
-    {
-        do
-        {
+    ;
+
+    public static void ledgerChoice() {
+        do {
             char ledgerChoice = scanner.next().toUpperCase().charAt(0);
             boolean validInput = true;
 
-            try
-            {
-                switch(ledgerChoice)
-                {
+            try {
+                switch (ledgerChoice) {
                     case 'A' -> displayAll();
                     case 'D' -> displayDeposits();
                     case 'P' -> displayPayments();
                     case 'R' -> ReportScreen.showReportScreen();
-                    case 'H'-> HomeScreen.showHomeScreen();
+                    case 'H' -> HomeScreen.showHomeScreen();
                     default -> System.out.println("Please enter valid choice: ");
 
                 }
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println("There was an error");
                 e.printStackTrace();
             }
         }
-        while(true);
+        while (true);
 
     }
 
-    public static void displayAll(){
+    public static void displayAll() {
         System.out.println
-        (
-                """
-                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                \t ;;  DISPLAYING ALL ENTRIES   ;;
-                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                """
-        );
-        for (Transaction transaction : transactionList)
-        {
+                (
+                        """
+                                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                \t ;;  DISPLAYING ALL ENTRIES   ;;
+                                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                """
+                );
+        for (Transaction transaction : transactionList) {
             System.out.println(
                     transaction.getTransactionDate() + " " +
-                    transaction.getTransactionTime() + " " +
-                    transaction.getTransactionDesc() + " " +
-                    transaction.getTransactionVendor() + " " +
-                    transaction.getTransactionAmount() + " "
+                            transaction.getTransactionTime() + " " +
+                            transaction.getTransactionDesc() + " " +
+                            transaction.getTransactionVendor() + " " +
+                            transaction.getTransactionAmount() + " "
             );
         }
-    };
-    public static void displayDeposits(){
+    }
+
+    ;
+
+    public static void displayDeposits() {
         System.out.println
-        (
-                """
-                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                \t ;;  DISPLAYING ALL DEPOSITS  ;;
-                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                """
-        );
-        for (Transaction transaction : transactionList)
-        {
-            if(transaction.getTransactionAmount() > 0)
-            {
+                (
+                        """
+                                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                \t ;;  DISPLAYING ALL DEPOSITS  ;;
+                                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                """
+                );
+        for (Transaction transaction : transactionList) {
+            String string = String.valueOf(transaction.getTransactionAmount());
+            if (!string.contains("-")) {
                 System.out.println(
                         transaction.getTransactionDate() + " " +
-                        transaction.getTransactionTime() + " " +
-                        transaction.getTransactionDesc() + " " +
-                        transaction.getTransactionVendor() + " " +
-                        transaction.getTransactionAmount()
+                                transaction.getTransactionTime() + " " +
+                                transaction.getTransactionDesc() + " " +
+                                transaction.getTransactionVendor() + " " +
+                                transaction.getTransactionAmount()
                 );
             }
         }
 
-    };
-    public static void displayPayments(){
+    }
+
+    ;
+
+    public static void displayPayments() {
         System.out.println
-        (
-                """
-                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                \t ;;  DISPLAYING ALL PAYMENTS  ;;
-                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                """
-        );
-        for (Transaction transaction : transactionList)
-        {
-            if(transaction.getTransactionAmount() < 0)
-            {
+                (
+                        """
+                                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                \t ;;  DISPLAYING ALL PAYMENTS  ;;
+                                \t ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                """
+                );
+        for (Transaction transaction : transactionList) {
+            String string = String.valueOf(transaction.getTransactionAmount());
+            if (string.contains("-")) {
                 System.out.println(
                         transaction.getTransactionDate() + " " +
-                        transaction.getTransactionTime() + " " +
-                        transaction.getTransactionDesc() + " " +
-                        transaction.getTransactionVendor() + " " +
-                        transaction.getTransactionAmount()
+                                transaction.getTransactionTime() + " " +
+                                transaction.getTransactionDesc() + " " +
+                                transaction.getTransactionVendor() + " " +
+                                transaction.getTransactionAmount()
                 );
             }
         }
-    };
+    }
 
-    public static ArrayList<Transaction> transactionParse(){
-        String delimiter = "|";
-        Scanner scanner = new Scanner(System.in);
+    ;
 
-        try(FileReader filereader = new FileReader("transactions.csv");
-            BufferedReader bufferedreader = new BufferedReader(filereader))
-        {
-            String input = null;
+    public static ArrayList<Transaction> readTransactions() {
+        ArrayList<Transaction> transactionList = new ArrayList<>();
+        try {
+            FileReader filereader = new FileReader("transactions.csv");
+            BufferedReader bufferedReader = new BufferedReader(filereader);
+            String input;
+            while ((input = bufferedReader.readLine()) != null) {
+                String[] fields = input.split("\\|");
 
-            while((input = bufferedreader.readLine()) != null)
-            {
-                String[] recordDetails = input.split(delimiter);
-
-                LocalDate date = LocalDate.parse(recordDetails[0]);
-                LocalTime time = LocalTime.parse(recordDetails[1]);
-                String description = recordDetails[2];
-                String vendor = recordDetails[3];
-                double amount = Double.parseDouble(recordDetails[4]);
-
-                Transaction transaction = new Transaction(date, time, description, vendor, amount);
+                Transaction transaction = new Transaction(LocalDate.parse(fields[0]),
+                        LocalTime.parse(fields[1]), fields[2], fields[3], Double.parseDouble(fields[4]));
                 transactionList.add(transaction);
-
             }
-            bufferedreader.close();
+            bufferedReader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        catch(Exception e){
-            System.out.println(" ");
-        }
+
+        Comparator<Transaction> dateCompare = Comparator.comparing(Transaction::getTransactionDate).reversed();
+        Comparator<Transaction> timeCompare = Comparator.comparing(Transaction::getTransactionTime).reversed();
+        Comparator<Transaction> descriptionCompare = Comparator.comparing(Transaction::getTransactionDesc).reversed();
+        transactionList.sort(dateCompare.thenComparing(timeCompare));
+        transactionList.sort(descriptionCompare);
 
         return transactionList;
     }
-
 }
